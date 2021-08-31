@@ -3,77 +3,102 @@ import 'package:flutter/material.dart';
 class AppTheme {
   AppTheme._();
 
-  static Color _iconColor = Colors.blueAccent.shade200;
+  //!! colors here
 
-  static const Color _lightPrimaryColor = Colors.white;
-  static const Color _lightPrimaryVariantColor = Color(0XFFE1E1E1);
-  static const Color _lightSecondaryColor = Colors.green;
-  static const Color _lightOnPrimaryColor = Colors.black;
+  static const Color _iconColorDark = Colors.white;
+  static const Color _iconColorLight = Colors.black;
 
-  static const Color _darkPrimaryColor = Colors.white24;
-  static const Color _darkPrimaryVariantColor = Colors.black;
-  static const Color _darkSecondaryColor = Colors.white;
-  static const Color _darkOnPrimaryColor = Colors.white;
+  static final Color _lightPrimaryColor =Colors.blueGrey.shade50; // Color(0xFFfbfbfb)
+  static final Color _lightPrimaryVariantColor =Colors.blueGrey.shade800; //Color(0xFF4f5b62);
+  static final Color _lightOnPrimaryColor =Colors.white60; // Color(0xFFbabdbe);
+  static  final Color _lightTextColorPrimary = Colors.black;
+  static  final Color _lightTextColorSecondary = Colors.blueGrey.shade900;
+  static const Color _lightSurfaceColor = Colors.white;
+
+  static  final Color _darkPrimaryColor = Colors.blueGrey.shade900;
+  static  final Color _darkPrimaryVariantColor = Colors.black;
+  static  final Color _darkOnPrimaryColor = Colors.blueGrey;
+  static  const Color _darkTextColorPrimary = Colors.white;
+  static  final Color _darkTextColorSecondary = Colors.blueGrey.shade200;
+  static final  Color _darkSurfaceColor = _darkOnPrimaryColor;
+
+  static  final Color _appbarColorLight = Colors.blueGrey;
+  static final Color _appbarColorDark = Colors.blueGrey.shade800; //Color(0xFF4f5b62);
+
+  // ignore: unused_field
+  static  const Color _accentColorLight = Color.fromRGBO(107, 234, 236, 1);
+  static  const Color _accentColorDark = Color.fromRGBO(74, 217, 217, 1);
 
   //! light Theme here #################
 
   static final ThemeData lightTheme = ThemeData(
-    scaffoldBackgroundColor: _lightPrimaryVariantColor,
+    scaffoldBackgroundColor: _lightPrimaryColor,
     appBarTheme: AppBarTheme(
-      color: _lightPrimaryVariantColor,
-      iconTheme: IconThemeData(color: _lightOnPrimaryColor),
+      color: _appbarColorLight,
+      
+      iconTheme: const IconThemeData(color: Colors.white),
     ),
     colorScheme: ColorScheme.light(
       primary: _lightPrimaryColor,
       primaryVariant: _lightPrimaryVariantColor,
-      secondary: _lightSecondaryColor,
       onPrimary: _lightOnPrimaryColor,
+      secondary: _accentColorDark,
+      // ignore: avoid_redundant_argument_values
+      surface: _lightSurfaceColor
     ),
-    iconTheme: IconThemeData(
-      color: _iconColor,
+    iconTheme: const IconThemeData(
+      color: _iconColorLight,
     ),
+    bottomAppBarColor: _appbarColorLight,
     textTheme: _lightTextTheme,
   );
 
 //! dark Theme here ########################
 
   static final ThemeData darkTheme = ThemeData(
-    scaffoldBackgroundColor: _darkPrimaryVariantColor,
+    scaffoldBackgroundColor: _darkPrimaryColor,
     appBarTheme: AppBarTheme(
-      color: _darkPrimaryVariantColor,
-      iconTheme: IconThemeData(color: _darkOnPrimaryColor),
+      color: _appbarColorDark,
+      iconTheme: const IconThemeData(color: Colors.white),
     ),
     colorScheme: ColorScheme.light(
       primary: _darkPrimaryColor,
       primaryVariant: _darkPrimaryVariantColor,
-      secondary: _darkSecondaryColor,
       onPrimary: _darkOnPrimaryColor,
+      secondary: _accentColorDark,
+      surface: _darkSurfaceColor
     ),
-    iconTheme: IconThemeData(
-      color: _iconColor,
+    bottomAppBarColor: _appbarColorDark,
+    iconTheme: const IconThemeData(
+      color: _iconColorDark,
     ),
     textTheme: _darkTextTheme,
   );
 
   static final TextTheme _lightTextTheme = TextTheme(
-    headline5: _lightScreenHeadingTextStyle,
+    headline1: _lightScreenHeadingTextStyle,
     bodyText1: _lightScreenTaskNameTextStyle,
     bodyText2: _lightScreenTaskDurationTextStyle,
   );
 
   static final TextTheme _darkTextTheme = TextTheme(
-    headline5: _darkScreenHeadingTextStyle,
+    headline1: _darkScreenHeadingTextStyle,
     bodyText1: _darkScreenTaskNameTextStyle,
     bodyText2: _darkScreenTaskDurationTextStyle,
   );
 
-  static final TextStyle _lightScreenHeadingTextStyle = TextStyle(fontSize: 48.0, color: _lightOnPrimaryColor);
-  static final TextStyle _lightScreenTaskNameTextStyle = TextStyle(fontSize: 20.0, color: _lightOnPrimaryColor);
-  static final TextStyle _lightScreenTaskDurationTextStyle = TextStyle(fontSize: 16.0, color: Colors.grey);
+  static final TextStyle _lightScreenHeadingTextStyle =
+      TextStyle(color: _lightTextColorPrimary, fontFamily: "Rubik");
+  static final TextStyle _lightScreenTaskNameTextStyle =
+      TextStyle(color: _lightTextColorPrimary, fontFamily: "Rubik");
+  static final TextStyle _lightScreenTaskDurationTextStyle =
+      TextStyle(color: _lightTextColorSecondary, fontFamily: "Rubik");
 
-  static final TextStyle _darkScreenHeadingTextStyle = _lightScreenHeadingTextStyle.copyWith(color: _darkOnPrimaryColor);
-
-  static final TextStyle _darkScreenTaskNameTextStyle = _lightScreenTaskNameTextStyle.copyWith(color: _darkOnPrimaryColor);
-
-  static final TextStyle _darkScreenTaskDurationTextStyle = _lightScreenTaskDurationTextStyle;
+  static final TextStyle _darkScreenHeadingTextStyle =
+      _lightScreenHeadingTextStyle.copyWith(color: _darkTextColorPrimary);
+  static final TextStyle _darkScreenTaskNameTextStyle =
+      _lightScreenTaskNameTextStyle.copyWith(color: _darkTextColorPrimary);
+  static final TextStyle _darkScreenTaskDurationTextStyle =
+      _lightScreenTaskDurationTextStyle.copyWith(
+          color: _darkTextColorSecondary);
 }
